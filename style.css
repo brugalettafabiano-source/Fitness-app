@@ -1,0 +1,139 @@
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f5f4f0;
+  --surface:#ffffff;
+  --surface2:#f0efe9;
+  --border:#e2e0d8;
+  --text:#1a1917;
+  --text2:#6b6963;
+  --text3:#9e9b94;
+  --accent:#2d6a4f;
+  --accent-light:#e8f5ee;
+  --accent2:#c77b2e;
+  --accent2-light:#fdf3e7;
+  --danger:#c0392b;
+  --danger-light:#fdecea;
+  --radius:10px;
+  --radius-lg:16px;
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:15px;line-height:1.6}
+
+/* NAV */
+nav{background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;padding:0 2rem}
+.nav-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:2rem;height:56px}
+.logo{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text2);white-space:nowrap}
+.nav-tabs{display:flex;gap:4px;margin-left:auto}
+.nav-tab{padding:6px 18px;border-radius:6px;border:none;background:transparent;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:var(--text2);transition:.15s;text-decoration:none;display:inline-flex;align-items:center}
+.nav-tab:hover{background:var(--surface2);color:var(--text)}
+.nav-tab.active{background:var(--text);color:#fff}
+
+/* LAYOUT */
+.page{max-width:960px;margin:0 auto;padding:2rem}
+
+/* DAY TABS */
+.day-tabs{display:flex;gap:6px;margin-bottom:1.5rem;flex-wrap:wrap}
+.day-tab{padding:7px 16px;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--text2);transition:.15s;position:relative}
+.day-tab:hover{border-color:var(--accent);color:var(--accent)}
+.day-tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.day-tab.complete::after{content:'';position:absolute;top:5px;right:5px;width:6px;height:6px;border-radius:50%;background:#52b788}
+.day-tab.active.complete::after{background:#b7e4c7}
+.day-content{display:none}
+.day-content.active{display:block}
+
+/* SECTION HEADER */
+.section-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.section-hdr h2{font-size:18px;font-weight:600}
+.btn{padding:7px 16px;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--text);transition:.15s;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{background:var(--surface2)}
+.btn-accent{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn-accent:hover{opacity:.9}
+.btn-sm{padding:4px 10px;font-size:12px}
+
+/* EXERCISE CARD */
+.exercise-list{display:flex;flex-direction:column;gap:8px}
+.ex-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;display:flex;align-items:center;gap:12px;transition:.15s}
+.ex-card.done{background:var(--accent-light);border-color:#b7e4c7}
+.ex-check{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.15s;background:var(--surface)}
+.ex-check:hover{border-color:var(--accent)}
+.ex-card.done .ex-check{background:var(--accent);border-color:var(--accent)}
+.check-icon{display:none;width:12px;height:12px}
+.ex-card.done .check-icon{display:block}
+.ex-info{flex:1}
+.ex-name{font-weight:500;font-size:14px;margin-bottom:2px}
+.ex-meta{font-size:12px;color:var(--text2);font-family:'DM Mono',monospace}
+.ex-card.done .ex-name{text-decoration:line-through;color:var(--text2)}
+.ex-actions{display:flex;gap:6px}
+.icon-btn{width:28px;height:28px;border-radius:6px;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:.15s}
+.icon-btn:hover{background:var(--surface2);color:var(--danger)}
+
+/* PROGRESS BAR */
+.progress-row{margin-bottom:1.5rem}
+.progress-bar-bg{height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+.progress-bar-fill{height:100%;background:var(--accent);border-radius:2px;transition:.4s}
+.progress-label{font-size:12px;color:var(--text2);margin-bottom:6px}
+
+/* ADD EXERCISE FORM */
+.add-form{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-top:12px;display:none}
+.add-form.open{display:block}
+.form-row{display:grid;grid-template-columns:1fr 80px 80px;gap:8px;margin-bottom:10px}
+input[type=text],input[type=number]{font-family:'DM Sans',sans-serif;font-size:13px;padding:7px 10px;border:1px solid var(--border);border-radius:6px;background:var(--bg);color:var(--text);width:100%}
+input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+.form-actions{display:flex;gap:8px;justify-content:flex-end}
+
+/* DIET PAGE */
+.meal-grid{display:flex;flex-direction:column;gap:12px}
+.meal-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+.meal-hdr{padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.meal-label{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--text2)}
+.meal-kcal{font-size:12px;font-family:'DM Mono',monospace;color:var(--accent)}
+.food-list{padding:4px 0}
+.food-row{display:flex;align-items:center;gap:8px;padding:8px 16px;border-bottom:1px solid var(--surface2)}
+.food-row:last-of-type{border:none}
+.food-name{flex:1;font-size:14px}
+.food-macros{font-size:11px;font-family:'DM Mono',monospace;color:var(--text2);text-align:right;white-space:nowrap}
+.food-del{width:24px;height:24px;border-radius:5px;border:none;background:transparent;cursor:pointer;color:var(--text3);font-size:14px;transition:.15s}
+.food-del:hover{background:var(--danger-light);color:var(--danger)}
+.meal-footer{padding:8px 16px;display:flex;gap:8px}
+.add-food-btn{font-size:12px;color:var(--accent);background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:500;padding:0}
+.add-food-btn:hover{text-decoration:underline}
+
+/* MACRO SUMMARY */
+.macro-summary{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;margin-top:1.5rem}
+.macro-summary h3{font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--text2);margin-bottom:12px}
+.macro-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.macro-card{background:var(--surface2);border-radius:var(--radius);padding:14px 8px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0}
+.macro-val{font-size:20px;font-weight:600;font-family:'DM Mono',monospace;white-space:nowrap}
+.macro-lbl{font-size:11px;color:var(--text2);margin-top:4px;white-space:nowrap}
+.macro-card.kcal .macro-val{color:var(--accent)}
+.macro-card.prot .macro-val{color:#2196a0}
+.macro-card.carb .macro-val{color:var(--accent2)}
+.macro-card.fat .macro-val{color:#8b5cf6}
+
+/* INLINE ADD FOOD */
+.inline-food-form{padding:8px 16px;display:none;background:var(--surface2)}
+.inline-food-form.open{display:block}
+.food-form-row{display:grid;grid-template-columns:1fr 60px 60px 60px 60px;gap:6px;align-items:center}
+.food-form-row input{font-size:12px;padding:5px 8px}
+
+/* STORICO */
+.storico-empty{text-align:center;padding:4rem 0;color:var(--text3);font-size:14px}
+.storico-day{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);margin-bottom:12px;overflow:hidden}
+.storico-day-hdr{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.storico-day-title{font-weight:600;font-size:15px}
+.storico-day-meta{font-size:12px;color:var(--text2);font-family:'DM Mono',monospace}
+.storico-ex-row{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--surface2)}
+.storico-ex-row:last-child{border:none}
+.storico-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.storico-ex-name{flex:1;font-size:14px}
+.storico-ex-detail{font-size:12px;color:var(--text2);font-family:'DM Mono',monospace}
+.storico-ex-time{font-size:11px;color:var(--text3);font-family:'DM Mono',monospace;margin-left:8px}
+
+/* MOBILE */
+@media(max-width:480px){
+  nav{padding:0 1rem}
+  .page{padding:1.2rem 1rem}
+  .form-row{grid-template-columns:1fr;gap:6px}
+  .food-form-row{grid-template-columns:1fr 1fr;gap:6px}
+  .food-form-row input:first-child{grid-column:1/-1}
+  .macro-val{font-size:16px}
+}
